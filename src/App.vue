@@ -17,7 +17,7 @@
     <p>Ideally, i'd like to sleep <input id="idealhours" type="text"> hours a night</p><button v-on:click="idealSleepHours()">Enter</button>
     <p id="idealsleep"></p>
     <h3>So what's my outcome?</h3>
-    <p id="sleepdebtresult"><button v-on:click="calculateSleepDebt()">Calculcate!</button></p>
+    <button v-on:click="calculateSleepDebt()">Calculcate!</button><p id="sleepdebtresult"></p>
   </div>
   </div>
 </template>
@@ -25,7 +25,7 @@
 <script>
 
 //adds this variable so it can be accessed from within the methods 
-let actualSleepHours = function actualSleepHours() {
+  function actualSleepHours() {
       let day1 = document.getElementById('day1').value;
       let day2 = document.getElementById('day2').value;
       let day3 = document.getElementById('day3').value;
@@ -35,14 +35,18 @@ let actualSleepHours = function actualSleepHours() {
       let day7 = document.getElementById('day7').value;
       const sum = parseFloat(day1) + parseFloat(day2) + parseFloat(day3) + parseFloat(day4) + parseFloat(day5) + parseFloat(day6) + parseFloat(day7);
       document.getElementById("totalsleep").innerHTML = `You sleep ${sum} hours a week`;
+      return sum
     }
 
 // also adds this so it can be accessed within the methods
-    let idealSleep = function idealSleepHours() {
+     function idealSleepHours() {
       let idealHours = 8 * document.getElementById('idealhours').value;
-      console.log(idealHours);
+     //console.log(idealHours);
       document.getElementById("idealsleep").innerHTML = `Ideally you need to sleep ${idealHours} hours a week`;
+      return idealHours
+      
     }
+
 export default {
   name: 'App',
   methods: {
@@ -58,24 +62,33 @@ export default {
       let day7 = document.getElementById('day7').value;
       const sum = parseFloat(day1) + parseFloat(day2) + parseFloat(day3) + parseFloat(day4) + parseFloat(day5) + parseFloat(day6) + parseFloat(day7);
       document.getElementById("totalsleep").innerHTML = `You sleep ${sum} hours a week`;
+      //important to have this so it returns a value when called
+      return sum
     },
 
 
 //keeps this here so it can perform action on html
     idealSleepHours: function() {
       let idealHours = 8 * document.getElementById('idealhours').value;
-      console.log(idealHours);
+      //console.log(idealHours);
       document.getElementById("idealsleep").innerHTML = `Ideally you need to sleep ${idealHours} hours a week`;
+      //important to have this so it returns a value when called
+      return idealHours
     },
+
     calculateSleepDebt: function() {
-      if(actualSleepHours() === idealSleep()){
-        document.getElementById("sleepdebtresult").innerHTML = 'Youre on track!'
-      } else if (actualSleepHours() < idealSleep()) {
-        document.getElementById("sleepdebtresult").innerHTML = 'Youre under sleeping!'
-      }
-      console.log(actualSleepHours)
-      console.log(idealSleep)
-}
+      console.log('clicked')
+    console.log(idealSleepHours());
+   if(actualSleepHours() === idealSleepHours()){
+     document.getElementById("sleepdebtresult").innerHTML += 'Youre on track!'
+   }
+   else if (actualSleepHours() < idealSleepHours()) {
+     document.getElementById("sleepdebtresult").innerHTML += 'Youre under sleeping!'
+   }
+   else if (idealSleepHours() > actualSleepHours()) {
+     document.getElementById("sleepdebtresult").innerHTML += "Youre over sleeping!"
+   }
+ }
   }
 }
 </script>
