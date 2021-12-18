@@ -77,16 +77,19 @@ export default {
     },
 
     calculateSleepDebt: function() {
-      console.log('clicked')
+    console.log('clicked')
     console.log(idealSleepHours());
+    console.log(actualSleepHours())
    if(actualSleepHours() === idealSleepHours()){
      document.getElementById("sleepdebtresult").innerHTML += 'Youre on track!'
    }
    else if (actualSleepHours() < idealSleepHours()) {
-     document.getElementById("sleepdebtresult").innerHTML += 'Youre under sleeping!'
+     let difference = idealSleepHours() - actualSleepHours();
+     document.getElementById("sleepdebtresult").innerHTML += `Youre under sleeping! Add ${difference} to your sleep schedule to get on track.`
    }
    else if (idealSleepHours() > actualSleepHours()) {
-     document.getElementById("sleepdebtresult").innerHTML += "Youre over sleeping!"
+     let difference = idealSleepHours() - actualSleepHours();
+     document.getElementById("sleepdebtresult").innerHTML += `Youre over sleeping by ${difference}!`
    }
  }
   }
