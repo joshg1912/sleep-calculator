@@ -25,7 +25,7 @@
 
 <script>
 
-//adds this variable so it can be accessed from within the methods 
+//adds this so it can be accessed from within the methods 
   function actualSleepHours() {
       let day1 = document.getElementById('day1').value;
       let day2 = document.getElementById('day2').value;
@@ -39,13 +39,13 @@
       return sum
     }
 
+
 // also adds this so it can be accessed within the methods
      function idealSleepHours() {
-      let idealHours = 8 * document.getElementById('idealhours').value;
+      let idealHours = 7 * document.getElementById('idealhours').value;
      //console.log(idealHours);
       document.getElementById("idealsleep").innerHTML = `Ideally you need to sleep ${idealHours} hours a week`;
       return idealHours
-      
     }
 
 export default {
@@ -53,7 +53,6 @@ export default {
   message:'sleep calculator',
   methods: {
 
-//keeps this here so it can perform the action on the html
     actualSleepHours: function () {
       let day1 = document.getElementById('day1').value;
       let day2 = document.getElementById('day2').value;
@@ -69,14 +68,15 @@ export default {
     },
 
 
-//keeps this here so it can perform action on html
     idealSleepHours: function() {
-      let idealHours = 8 * document.getElementById('idealhours').value;
+      let idealHours = 7 * document.getElementById('idealhours').value;
       //console.log(idealHours);
       document.getElementById("idealsleep").innerHTML = `Ideally you need to sleep ${idealHours} hours a week`;
       //important to have this so it returns a value when called
       return idealHours
     },
+
+
 
     calculateSleepDebt: function() {
     console.log('clicked');
@@ -96,6 +96,7 @@ export default {
  }
   }
 }
+
 </script>
 
 <style>
