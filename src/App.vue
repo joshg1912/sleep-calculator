@@ -1,8 +1,9 @@
 <template>
   <div id="app">
+    <h1>Sleep Calculator</h1>
     <div class="sleephours">
     <form>
-<h1>How many hours do you sleep per day?</h1>
+<h2>How many hours do you sleep per day?</h2>
      <p>Monday <input id="day1" type="text"></p>
      <p>Tuesday <input id="day2" type="text"></p>
      <p>Wednesday <input id="day3" type="text"></p>
@@ -49,6 +50,7 @@
 
 export default {
   name: 'App',
+  message:'sleep calculator',
   methods: {
 
 //keeps this here so it can perform the action on the html
@@ -77,19 +79,19 @@ export default {
     },
 
     calculateSleepDebt: function() {
-    console.log('clicked')
+    console.log('clicked');
     console.log(idealSleepHours());
-    console.log(actualSleepHours())
+    console.log(actualSleepHours());
    if(actualSleepHours() === idealSleepHours()){
-     document.getElementById("sleepdebtresult").innerHTML += 'Youre on track!'
+     document.getElementById("sleepdebtresult").innerHTML = 'Youre on track!'
    }
    else if (actualSleepHours() < idealSleepHours()) {
      let difference = idealSleepHours() - actualSleepHours();
-     document.getElementById("sleepdebtresult").innerHTML += `Youre under sleeping! Add ${difference} to your sleep schedule to get on track.`
+     document.getElementById("sleepdebtresult").innerHTML = `Youre under sleeping! Add ${difference} hours to your sleep schedule to get on track.`
    }
    else if (idealSleepHours() > actualSleepHours()) {
      let difference = idealSleepHours() - actualSleepHours();
-     document.getElementById("sleepdebtresult").innerHTML += `Youre over sleeping by ${difference}!`
+     document.getElementById("sleepdebtresult").innerHTML = `Youre over sleeping by ${difference} hours!`
    }
  }
   }
